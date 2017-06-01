@@ -46,4 +46,26 @@ $ldap->add('uid=christian.contreras,ou=empleados,ou=usuarios,dc=picnic,dc=com',$
 //mailbox -> picnic/jorge.gonzalez/
 //uid -> jorge.gonzalez
 //userPassword
+
+
+/* Campos a pedir para Asterisk */
+/*
+    cn *
+    ObjectClass -> AsteriskAccount,AsteriskSIPUser,AsteriskExtension,inetOrgPerson,person,top,organizationalPerson
+    sn *
+    AstAccountAllowedCodec -> ulaw,alaw,gsm
+    AstAccountCallerID -> 1001 *
+    AstAccountContext -> todos
+    AstAccountDisallowedCode -> all
+    AstAccountHost -> dynamic
+    AstAccountLastQualityMiliseconds -> 1
+    AstAccountMailbox -> carlosf@chiquipan.com *
+    AstAccountMusicOnHold ->  default
+    AstAccountQualify -> yes
+    AstAccountSecret -> carlos *
+    AstAccountType -> friend
+    AstAccountVideoSupport -> yes
+    AstExtension -> 1001 *
+    uid -> 1001 *   
+*/
 ?>
