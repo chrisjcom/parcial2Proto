@@ -1,55 +1,43 @@
-
-<?php
-require 'vendor/autoload.php';
-
-$baseDn = 'dc=picnic,dc=com';
-$options = array(
-    'host' => '192.168.122.53',
-    'password' => 'proto',
-    'bindRequiresDn' => true,
-    'baseDn' => 'uid=jorge.gonzalez,ou=empleados,ou=usuarios,dc=picnic,dc=com',
-    'username' => "cn=admin,$baseDn"
-);
-$ldap = new Zend\Ldap\Ldap($options);
-$ldap->bind();
-
-$result = $ldap->search(
-   '(objectclass=*)',
-   "$baseDn",
-   Zend\Ldap\Ldap::SEARCH_SCOPE_SUB
-);
-
-/*print json_encode($result->toArray());*/
-$count = 0;
-foreach ($result as $item) {
-    $count++;
-    if($count>4)
-        echo $item["dn"] . ': ' . $item['cn'][0] . '<br />';
-}
-
-/*$entry = [];
-Zend\Ldap\Attribute::setAttribute($entry, 'cn', 'Christian Jhossymar');
-Zend\Ldap\Attribute::setAttribute($entry, 'sn', 'Contreras Murgas');
-Zend\Ldap\Attribute::setAttribute($entry, 'homeDirectory', '/home/inmoral/picnic/christian.contreras');
-Zend\Ldap\Attribute::setAttribute($entry, 'mail', 'christian.contreras@picnic.com');
-Zend\Ldap\Attribute::setAttribute($entry, 'mailbox', 'picnic/christian.contreras/');
-Zend\Ldap\Attribute::setAttribute($entry, 'uid', 'christian.contreras');
-Zend\Ldap\Attribute::setAttribute($entry, 'userPassword', 'magico');
-Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', ["inetOrgPerson","organizationalPerson","CourierMailAccount","person","top"]);
-
-$ldap->add('uid=christian.contreras,ou=empleados,ou=usuarios,dc=picnic,dc=com',$entry);*/
-
-//cn -> Jorge Alberto
-//homeDirectory -> /home/inmortal/picnic/jorge.gonzalez
-//mail -> jorge.gonzalez@picnic.com
-//sn -> Gonzalez Barillas
-//mailbox -> picnic/jorge.gonzalez/
-//uid -> jorge.gonzalez
-//userPassword
-
-
-/* Campos a pedir para Asterisk */
-/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <form action="crearUsuario.ph" method="POST">
+        <div class="form-group">
+            <label for="commonName">Common Name: </label>
+            <input type="text" class="form-control" id="commonName" placeholder="e.g. David, Alejandro, Lidia, Gabriela, Erick">
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname: </label>
+            <input type="text" class="form-control" id="surname" placeholder="e.g. Contreras, Salazar, Fuentes, Acevedo, Olmedo, etc.">
+        </div>
+        <div class="form-group">
+            <label for="callerID">Caller ID: </label>
+            <input type="text" class="form-control" id="callerID" placeholder="e.g. Jorge Gonzalez, Guillermo Rivera, Roberto Casadei">
+        </div>
+        <div class="form-group">
+            <label for="mailbox">Mailbox: </label>
+            <input type="email" class="form-control" id="mailbox" placeholder="e.g. jorge.gonzalez@chiquipan.com, guillermo.rivera@manisalado.com">
+        </div>
+        <div class="form-group">
+            <label for="secret">Secret: </label>
+            <input type="password" class="form-control" id="secret" placeholder="e.g. magico">
+        </div>
+        <div class="form-group">
+            <label for="extension">Extension: </label>
+            <input type="number" class="form-control" id="extension" placeholder="e.g. 1101, 1054, 1498, 1376, 1239, etc.">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button class="btn btn-default" type="reset">Cancelar</button>
+    </form>
+    <!--
+    /* Campos a pedir para Asterisk */
     cn *
     ObjectClass -> AsteriskAccount,AsteriskSIPUser,AsteriskExtension,inetOrgPerson,person,top,organizationalPerson
     sn *
@@ -67,5 +55,6 @@ $ldap->add('uid=christian.contreras,ou=empleados,ou=usuarios,dc=picnic,dc=com',$
     AstAccountVideoSupport -> yes
     AstExtension -> 1001 *
     uid -> 1001 *   
-*/
-?>
+    -->
+</body>
+</html>
