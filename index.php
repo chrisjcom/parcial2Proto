@@ -28,13 +28,17 @@
                 <input type="email" class="form-control" id="mailbox" name="mailbox" placeholder="e.g. jorge.gonzalez@chiquipan.com, guillermo.rivera@manisalado.com">
             </div>
             <div class="form-group">
+                <label for="uid">Username: </label>
+                <input type="text" class="form-control" id="uid" name="uid" placeholder="e.g. David, Alejandro, Lidia, Gabriela, Erick">
+            </div>
+            <div class="form-group">
                 <label for="secret">Secret: </label>
                 <input type="password" class="form-control" id="secret" name="secret" placeholder="e.g. magico">
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label for="extension">Extension: </label>
                 <input type="number" class="form-control" id="extension" name="extension" placeholder="e.g. 1101, 1054, 1498, 1376, 1239, etc.">
-            </div>
+            </div>-->
             <button type="submit" class="btn btn-default">Submit</button>
             <button class="btn btn-default" type="reset">Cancelar</button>
         </form>
