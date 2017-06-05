@@ -1,6 +1,5 @@
 <?php
-    require 'vendor/autoload.php';
-
+    require 'vendor/autoload.php';    
     $baseDn = 'dc=picnic,dc=com';
     $options = array(
         'host' => '192.168.122.53',

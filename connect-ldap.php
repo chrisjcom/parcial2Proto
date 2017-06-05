@@ -6,7 +6,7 @@ $options = array(
     'host' => '192.168.122.53',
     'password' => 'proto',
     'bindRequiresDn' => true,
-    'baseDn' => 'uid=jorge.gonzalez,ou=empleados,ou=usuarios,dc=picnic,dc=com',
+    'baseDn' => '   ou=empleados,ou=usuarios,dc=picnic,dc=com',
     'username' => "cn=admin,$baseDn"
 );
 $ldap = new Zend\Ldap\Ldap($options);
