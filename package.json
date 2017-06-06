@@ -1,11 +1,12 @@
 {
   "name": "parcial2Proto",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/chrisjcom/parcial2Proto.git",
   "author": "Jhossymar Contreras <chrisj_contreras@outlook.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "bootstrap": "^3.3.7"
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
   }
 }

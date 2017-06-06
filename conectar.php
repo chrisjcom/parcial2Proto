@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require 'vendor/autoload.php';
     if(!empty($_POST))
     {
@@ -11,14 +12,18 @@
             'username' => $_POST['username']
         );
         $ldap = new Zend\Ldap\Ldap($options);
-        $ldap->bind();
-
-        $result = $ldap->search(
+        if($ldap->bind())
+        {
+            echo "PRueba";
+        } else {
+            echo "Prueba 2";
+        }
+        /*$result = $ldap->search(
             '(objectclass=*)',
             "$baseDn",
             Zend\Ldap\Ldap::SEARCH_SCOPE_SUB
         );
 
-        print json_encode($result->toArray());
+        print json_encode($result->toArray());*/
     }
 ?>
