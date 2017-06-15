@@ -38,7 +38,7 @@
                 <label for="surname">Surname: </label>
                 <input type="text" class="form-control" id="surname" name="surname" placeholder="e.g. Contreras, Salazar, Fuentes, Acevedo, Olmedo, etc." required>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label for="callerID">Caller ID: </label>
                 <input type="text" class="form-control" id="callerID" name="callerID" placeholder="e.g. Jorge Gonzalez, Guillermo Rivera, Roberto Casadei" required>
             </div>
@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label for="uid">Username: </label>
                 <input type="text" class="form-control" id="uid" name="uid" placeholder="e.g. David, Alejandro, Lidia, Gabriela, Erick" required>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label for="secret">Secret: </label>
                 <input type="password" class="form-control" id="secret" name="secret" placeholder="e.g. magico" required>

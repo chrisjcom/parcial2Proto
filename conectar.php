@@ -14,7 +14,11 @@
         $ldap = new Zend\Ldap\Ldap($options);
         if($ldap->bind())
         {
-            echo "PRueba";
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['password'] = $_POST['password'];
+            $_SESSION['host'] = $_POST['host'];
+            $_SESSION['baseDn'] = $_POST['host'];
+            header('Location:index.php');
         } else {
             echo "Prueba 2";
         }
