@@ -1,0 +1,20 @@
+body
+{
+    margin: 20px auto 0 auto;
+}
+
+#menu
+{
+    text-align: center;
+}
+
+#menu > li
+{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#menu > li > a > i
+{
+    margin-right: 5px;
+}

@@ -24,12 +24,12 @@
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCallerID', $_POST['commonName'].' '.$_POST['surname']);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountSecret', $_POST['secret']);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountQualify', 'yes');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountNAT', 'yes');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountNAT', 'no');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountType', 'friend');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountHost', 'dynamic');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountMailbox', $mailbox);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCanReInvite', 'yes');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm,h264,h263,h263p');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountLastQualifyMilliseconds', 500);        
             Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', ["inetOrgPerson","top","AsteriskSIPUser"]);
 
