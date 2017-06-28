@@ -29,8 +29,8 @@
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountHost', 'dynamic');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountMailbox', $mailbox);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCanReInvite', 'yes');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm,h264,h263,h263p');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountLastQualifyMilliseconds', 500);        
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm,ulaw,h264,h263,h263p');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountLastQualifyMilliseconds', 500);
             Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', ["inetOrgPerson","top","AsteriskSIPUser"]);
 
             /*Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountDisallowedCodec', 'all');

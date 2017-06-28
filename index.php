@@ -25,7 +25,7 @@
         <header>
             <nav>
                 <ul id="menu">
-                    <li><a href="createUser.php"><i class="fa fa-user" aria-hidden="true"></i>Crear Usuario</a></li>
+                    <li><a href="index.php"><i class="fa fa-user" aria-hidden="true"></i>Crear Usuario</a></li>
                     <li><a href="showUsers.php"><i class="fa fa-list" aria-hidden="true"></i>Mostrar Usuarios</a></li>                    
                 </ul>
             </nav>
@@ -67,11 +67,6 @@
     } else
     {
 ?>
-        <p>
-            <label for="nameCon">Nombre de conexion: </label>
-            <input type="text" id="nameCon" name="nameCon">
-            <button id="guardarCon" class='btn' >Guardar</button>
-        </p>
         <form action="conectar.php" method="post">
             <div class="form-group">
                 <label for="host: ">Host: </label>
@@ -97,6 +92,5 @@
 ?>
     </div>
     <script src="./node_modules/jquery/dist/jquery.js"></script>
-    <script src="./js/localStorage.js"></script>
 </body>
 </html>

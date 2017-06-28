@@ -17,7 +17,7 @@
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
             $_SESSION['host'] = $_POST['host'];
-            $_SESSION['baseDn'] = $_POST['host'];
+            $_SESSION['baseDn'] = $_POST['baseDN'];
             header('Location:index.php');
         } else {
             echo "Prueba 2";
