@@ -28,12 +28,13 @@
                 <ul id="menu">
                     <li><a href="index.php"><i class="fa fa-user" aria-hidden="true"></i>Crear Usuario</a></li>
                     <li><a href="showUsers.php"><i class="fa fa-list" aria-hidden="true"></i>Mostrar Usuarios</a></li>                    
+                    <li><a href="close.php">Cerrar sesión</a></li>
                 </ul>
             </nav>
         </header>
         
-<?php
-        $options = array(
+<?php        
+        /*$options = array(
             'host' => $host,
             'password' => $password,
             'bindRequiresDn' => true,
@@ -44,11 +45,11 @@
         $ldap->bind();
         $result = $ldap->search(
             '(objectclass=AsteriskSIPUser)',
-            'ou=empleados,ou=usuarios,dc=picnic,dc=com',
+            $baseDN,
             Zend\Ldap\Ldap::SEARCH_SCOPE_SUB
         );
 
-        print json_encode($result->toArray());
+        print json_encode($result->toArray());*/
 
         /*$count = 0;
         foreach ($result as $item) {
@@ -56,6 +57,23 @@
             if($count>1)
                 echo $item["dn"] . ': ' . $item['cn'][0] . '<br />';
         }*/
+?>
+                    <table id="table"
+                                data-toggle="table"
+                                data-url="getUsers.php"
+                                data-height="300"
+                                data-show-columns="true"
+                                data-id-field="id">
+                        <thead>
+                            <tr>
+                                <!--<th data-field="state" data-checkbox="true"></th>-->
+                                <th data-field="astaccountcallerid">Caller ID</th>
+                                <th data-field="astaccountmailbox">Mailbox</th>
+                                <!--<th data-field="ubicacion" data-align="left">Ubicación</th>-->
+                            </tr>
+                        </thead>
+                    </table>
+<?php
     } else
     {
         header("Location:index.php");
@@ -63,5 +81,7 @@
 ?>
     </div>
     <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./node_modules/bootstrap-table/dist/bootstrap-table.js"></script>
 </body>
 </html>

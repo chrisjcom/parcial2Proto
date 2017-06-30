@@ -15,13 +15,13 @@
         $ldap->bind();
 
         if(!empty($_POST)) {                
-            $mailbox = $_POST['commonName'].'.'.$_POST['surname'].'@'.$domain[1].'.'.$domain[2];
+            $mailbox = $_POST['commonName'].'@'.$domain[1].'.'.$domain[2];
             $entry = [];
             Zend\Ldap\Attribute::setAttribute($entry, 'cn', $_POST['commonName']);
             Zend\Ldap\Attribute::setAttribute($entry, 'sn', $_POST['surname']);
             Zend\Ldap\Attribute::setAttribute($entry, 'uid', $_POST['commonName']);
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountContext', 'internal');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCallerID', $_POST['commonName'].' '.$_POST['surname']);
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountContext', 'default');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCallerID', $_POST['commonName']);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountSecret', $_POST['secret']);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountQualify', 'yes');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountNAT', 'no');
@@ -30,8 +30,11 @@
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountInsecure', 'invite');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountMailbox', $mailbox);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCanReInvite', 'yes');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm,ulaw,h264,h263,h263p');
-            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountLastQualifyMilliseconds', 500);
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountVideoSupport', 'yes');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstContext', 'internal');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstExtension', $_POST['commonName']);
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm,ulaw,h264,h263p,vp8');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountLastQualifyMilliseconds', -1);
             Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', ["inetOrgPerson","top","AsteriskSIPUser"]);
 
             /*Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountDisallowedCodec', 'all');
@@ -39,7 +42,8 @@
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountVideoSupport', 'yes');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstExtension', $_POST['extension']);*/
 
-            $ldap->add('uid='.$_POST['commonName'].',ou=sipUsers,dc='.$domain[1].',dc='.$domain[2],$entry);
+            // $ldap->add('uid='.$_POST['commonName'].',ou=sipUsers,dc='.$domain[1].',dc='.$domain[2],$entry);
+            $ldap->add('uid='.$_POST['commonName'].','.$_SESSION['baseDn'],$entry);
 
             /*for ($i = 1; $i < 5 ; $i++) { 
                 $entry = [];
