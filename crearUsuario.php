@@ -3,7 +3,7 @@
     session_start();
     if(isset($_SESSION['username']))
     {
-        $baseDn = 'dc=picnic,dc=com';
+        $domain = split(',dc=',$_SESSION["baseDn"]);
         $options = array(
             'host' => $_SESSION['host'],
             'password' => $_SESSION['password'],
@@ -15,7 +15,7 @@
         $ldap->bind();
 
         if(!empty($_POST)) {                
-            $mailbox = $_POST['commonName'].'.'.$_POST['surname'].'@picnic.com';
+            $mailbox = $_POST['commonName'].'.'.$_POST['surname'].'@'.$domain[1].'.'.$domain[2];
             $entry = [];
             Zend\Ldap\Attribute::setAttribute($entry, 'cn', $_POST['commonName']);
             Zend\Ldap\Attribute::setAttribute($entry, 'sn', $_POST['surname']);
@@ -27,6 +27,7 @@
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountNAT', 'no');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountType', 'friend');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountHost', 'dynamic');
+            Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountInsecure', 'invite');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountMailbox', $mailbox);
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountCanReInvite', 'yes');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountAllowedCodec', 'alaw,gsm,ulaw,h264,h263,h263p');
@@ -38,9 +39,9 @@
             Zend\Ldap\Attribute::setAttribute($entry, 'AstAccountVideoSupport', 'yes');
             Zend\Ldap\Attribute::setAttribute($entry, 'AstExtension', $_POST['extension']);*/
 
-            $ldap->add('uid='.$_POST['commonName'].',ou=sipUsers,dc=picnic,dc=com',$entry);
+            $ldap->add('uid='.$_POST['commonName'].',ou=sipUsers,dc='.$domain[1].',dc='.$domain[2],$entry);
 
-            for ($i = 1; $i < 5 ; $i++) { 
+            /*for ($i = 1; $i < 5 ; $i++) { 
                 $entry = [];
                 Zend\Ldap\Attribute::setAttribute($entry, 'cn', $_POST['commonName'].'-'.$i);
                 Zend\Ldap\Attribute::setAttribute($entry, 'sn', $_POST['commonName'].'-'.$i);
@@ -65,7 +66,7 @@
                 Zend\Ldap\Attribute::setAttribute($entry, 'objectClass', ["inetOrgPerson","top","AsteriskExtension"]);
 
                 $ldap->add('cn='.$_POST['commonName'].'-'.$i.',ou=extensiones,dc=picnic,dc=com',$entry);
-            }
+            }*/
         } else {
             echo "Vacio";
         }

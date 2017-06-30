@@ -43,19 +43,19 @@
         $ldap = new Zend\Ldap\Ldap($options);
         $ldap->bind();
         $result = $ldap->search(
-            '(objectclass=*)',
+            '(objectclass=AsteriskSIPUser)',
             'ou=empleados,ou=usuarios,dc=picnic,dc=com',
             Zend\Ldap\Ldap::SEARCH_SCOPE_SUB
         );
 
-        // print json_encode($result->toArray());
+        print json_encode($result->toArray());
 
-        $count = 0;
+        /*$count = 0;
         foreach ($result as $item) {
             $count++;
             if($count>1)
                 echo $item["dn"] . ': ' . $item['cn'][0] . '<br />';
-        }
+        }*/
     } else
     {
         header("Location:index.php");

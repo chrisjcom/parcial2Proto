@@ -20,13 +20,14 @@
         $username = $_SESSION['username'];
         $password = $_SESSION['password'];
         $host = $_SESSION['host'];
-        $baseDN = $_SESSION['baseDn'];         
+        $baseDN = $_SESSION['baseDn'];
 ?>
         <header>
             <nav>
                 <ul id="menu">
                     <li><a href="index.php"><i class="fa fa-user" aria-hidden="true"></i>Crear Usuario</a></li>
                     <li><a href="showUsers.php"><i class="fa fa-list" aria-hidden="true"></i>Mostrar Usuarios</a></li>                    
+                    <li><a href="close.php">Cerrar sesión</a></li>                    
                 </ul>
             </nav>
         </header>

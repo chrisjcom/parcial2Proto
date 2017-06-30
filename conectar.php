@@ -3,12 +3,11 @@
     require 'vendor/autoload.php';
     if(!empty($_POST))
     {
-        $baseDn = 'dc=picnic,dc=com';
         $options = array(
             'host' => $_POST['host'],
             'password' => $_POST['password'],
             'bindRequiresDn' => true,
-            'baseDn' => $_POST['baseDn'],
+            'baseDn' => $_POST['baseDN'],
             'username' => $_POST['username']
         );
         $ldap = new Zend\Ldap\Ldap($options);
